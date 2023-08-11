@@ -1,7 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const mongoConfig = require("./config");
-const pokemon = require("./models/pokemon");
+mongoConfig();
 const Pokemon = require("./models/Pokemons");
 
 const app = express();
@@ -47,20 +47,19 @@ app.get("/new", async (req, res) => {
 });
 
 app.post("/new", async (req, res) => {
+  const pokemonName = req.body.name.toLowerCase();
   try {
     let pokemon = await Pokemon.create({
-      name: req.body.name,
-      img: req.body.image,
+      name: pokemonName,
+      img: `http://img.pokemondb.net/artwork/${pokemonName}.jpg`,
     });
     console.log(pokemon);
   } catch (err) {
     console.log("Failed to create a Pokemon document: ", err);
   }
-  res.send("Pokemon Added!");
+  res.redirect("/pokemon");
 });
 
 app.listen(PORT, () => {
   console.log("Listening on port:", PORT);
 });
-
-mongoConfig();

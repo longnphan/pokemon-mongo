@@ -5,7 +5,7 @@ function Index({ pokemons }) {
     <div>
       <h1>See all the pokemon!</h1>
       <ul>
-        {pokemons.map((item) => {
+        {pokemons.map(item => {
           return (
             <li key={item.name}>
               <a href={`/pokemon/${item._id}`}>
@@ -15,6 +15,11 @@ function Index({ pokemons }) {
           );
         })}
       </ul>
+
+      <a href="/new">
+        <br />
+        <button>Add Pokemon</button>
+      </a>
     </div>
   );
 }
