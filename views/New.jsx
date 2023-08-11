@@ -5,11 +5,11 @@ function New() {
     <div>
       <h1>Add Pokemon</h1>
       <form action="/new" method="POST">
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">Pokemon Name:</label>
         <br />
         <input type="text" id="name" name="name"></input>
         <br />
-        <button>Submit</button>
+        <button>Add</button>
       </form>
     </div>
   );
